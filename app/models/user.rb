@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
   validates_presence_of :username,
                         :password_digest,
                         :first_name,
-                        :last_name,
+                        :last_name
 
-  validates_inclusion_of :invited_plus_one, :in => [true, false]
+  validates :invited_plus_one, inclusion: { in: [true, false] }
 end

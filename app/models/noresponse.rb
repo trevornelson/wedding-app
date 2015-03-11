@@ -1,0 +1,2 @@
+class NoResponse < User
+end

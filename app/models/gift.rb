@@ -4,5 +4,5 @@ class Gift < ActiveRecord::Base
                         :category,
                         :image_url
 
-  validates_inclusion_of :purchased, :in => [true, false]
+  validates :purchased, inclusion: { in: [true, false] }
 end

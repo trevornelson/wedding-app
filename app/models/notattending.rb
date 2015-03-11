@@ -1,0 +1,2 @@
+class NotAttending < User
+end
