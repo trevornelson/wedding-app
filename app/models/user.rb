@@ -12,5 +12,4 @@ class User < ActiveRecord::Base
                         :first_name,
                         :last_name
 
-  validates :invited_plus_one, inclusion: { in: [true, false] }
 end
