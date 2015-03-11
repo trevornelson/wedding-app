@@ -1,5 +1,7 @@
 class User < ActiveRecord::Base
 
+  has_secure_password
+
   validates :type, inclusion: { in: %w(Admin Attending NotAttending NoResponse),
     message: "Input is not a valid user type." }
 
