@@ -19,6 +19,8 @@ GEM
     bcrypt (3.1.10)
     builder (3.2.2)
     diff-lcs (1.2.5)
+    faker (1.4.3)
+      i18n (~> 0.5)
     i18n (0.7.0)
     jasmine (2.2.0)
       jasmine-core (~> 2.2)
@@ -73,6 +75,7 @@ DEPENDENCIES
   activerecord
   activesupport
   bcrypt
+  faker
   jasmine
   pg
   rack (~> 1.5)
