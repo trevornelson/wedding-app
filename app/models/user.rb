@@ -20,4 +20,21 @@ class User < ActiveRecord::Base
     end
     return type
   end
+
+  def self.json_responses
+    json_output = {}
+    self.all.map {|u| json_output[u.id] = {first_name:        u.first_name,
+                                            last_name:        u.last_name,
+                                            full_name:        u.first_name + ' ' + u.last_name,
+                                            username:         u.username,
+                                            street_address:   u.street_address,
+                                            city:             u.city,
+                                            state:            u.state,
+                                            zip_code:         u.zip_code,
+                                            invited_plus_one: u.invited_plus_one,
+                                            number_in_party:  u.number_in_party
+                                          }
+                  }
+    return json_output.to_json
+  end
 end
