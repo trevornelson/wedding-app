@@ -12,18 +12,18 @@ describe 'User Model' do
     expect(saved_user.first_name).to eq('David')
   end
 
-  it 'flagged user as not attending' do
+  it 'flagged user as attending' do
     valid_user.toggle_attending
     valid_user.save
     saved_user = Attending.find_by(username: 'username1')
     expect(saved_user.first_name).to eq('David')
   end
 
-  it 'flagged a user as attending' do
+  it 'flagged a user as not attending' do
     user = valid_attending_user.save
     user.toggle_attending
     user.save
-    saved_user = Attending.find_by(username: 'username2')
+    saved_user = NotAttending.find_by(username: 'username2')
     expect(saved_user.first_name).to eq('Berry')
   end
 

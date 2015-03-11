@@ -12,4 +12,12 @@ class User < ActiveRecord::Base
                         :first_name,
                         :last_name
 
+  def toggle_attending
+    if type == 'NoResponse' || type == 'NotAttending'
+      type == 'Attending'
+    elsif type == 'Attending'
+      type == 'NotAttending'
+    end
+    return type
+  end
 end
