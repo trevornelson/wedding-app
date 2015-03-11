@@ -5,11 +5,10 @@ class User < ActiveRecord::Base
 
   validates :username, uniqueness: true
 
-  validates_presence_of :type,
-                        :username,
+  validates_presence_of :username,
                         :password_digest,
                         :first_name,
                         :last_name,
 
-  validates_inclusion_of :invited_plus_one
+  validates_inclusion_of :invited_plus_one, :in => [true, false]
 end
