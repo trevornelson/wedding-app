@@ -4,5 +4,8 @@ class Gift < ActiveRecord::Base
                         :category,
                         :image_url
 
-  validates_inclusion_of :purchased
+  def mark_as_purchased
+    purchased = true
+    return purchased
+  end
 end

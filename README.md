@@ -19,7 +19,7 @@
 * As a user, I want to post marriage advice
 * As a user, I want to view a wedding gift registry
 * As a user, I want to mark an item in the wedding gift registry as purchased
-* As an admin, I want to view RSVP responses 
+* As an admin, I want to view RSVP responses
 * As an admin, I want to add items to the registry
 * As a user, I want to view flight options [optional]
 * As a user, I want to view hotel options [optional]
@@ -52,7 +52,7 @@
 * title -> string
 * category -> string
 * url -> string
-* image -> string (product image url)
+* image_url -> string (product image url)
 * purchased -> boolean
 
 ### Songs
