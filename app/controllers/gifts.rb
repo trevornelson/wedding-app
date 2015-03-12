@@ -1,6 +1,7 @@
-get '/gift/index' do
-  gifts = Gift.where(purchased: false)
-  erb :'gifts/_index', :locals => {gifts: gifts}
+get '/gifts' do
+  @gifts = Gift.where(purchased: false)
+  @session_user = User.find(session[:user_id])
+  erb :'gifts/index'
 end
 
 get '/gifts/create' do
@@ -10,15 +11,18 @@ get '/gifts/create' do
   else
     erb :'content/_error', :locals => {error_title: "I can't do that, Dave.",
                                         error_description: "Sorry, you don't have access to that page."}
+  end
 end
 
 post '/gifts' do
   gift = Gift.new(params)
   if gift.valid?
     gift.save
-    redirect '/gifts/success'
+    redirect '/'
+    # redirect '/gifts/success'
   else
-    redirect '/gifts/error'
+    redirect '/'
+    # redirect '/gifts/error'
   end
 end
 

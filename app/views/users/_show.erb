@@ -1,1 +1,11 @@
-<%= erb :'users/_rsvp', :locals => {user: user} %>
+<div class="jumbotron">
+
+  <h1>Welcome, <%= session_user.first_name %></h1>
+
+  <% if user.type == 'NoResponse' || user.type == 'Admin' %>
+  <%= erb :'users/_rsvp', :locals => {user: user, session_user: session_user} %>
+  <% end %>
+
+</div>
+
+<%= erb :'content/_wedding_details' %>

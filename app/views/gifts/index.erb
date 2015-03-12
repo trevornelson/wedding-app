@@ -1,0 +1,18 @@
+<h1>Wedding Registry</h1>
+
+<% if @session_user.type == 'Admin' %>
+<form method="post" action="/gifts">
+  <input type="text" name="title" placeholder="Title">
+  <input type="text" name="category" placeholder="Category">
+  <input type="text" name="url" placeholder="URL">
+  <input type="text" name="image_url" placeholder="Image URL">
+  <input type="submit">
+</form>
+<% end %>
+
+<ul class="list-group">
+<% @gifts.each do |gift| %>
+<li class="list-group-item">
+<h4><%= gift.title %></h4>
+</li>
+<% end %>
