@@ -1,0 +1,14 @@
+#page-content {
+  display: block;
+  padding-top: 100px;
+}
+
+.form-container {
+  padding: 15px;
+  width: 50%;
+}
+
+.wedding-details > img {
+  background-image: url('/img/venue.jpg') no-repeat;
+  display: cover;
+}

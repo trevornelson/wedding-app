@@ -1,5 +1,8 @@
 class User < ActiveRecord::Base
 
+  has_many :songs
+  has_many :notes
+
   has_secure_password
 
   validates :type, inclusion: { in: %w(Admin Attending NotAttending NoResponse),

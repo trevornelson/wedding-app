@@ -26,8 +26,13 @@ get '/users/create' do
 end
 
 put '/users/rsvp' do
-  user = session[:user_id]
-  user.toggle_attending
+  content_type :json
+
+  user = User.find(session[:user_id])
+  user.update(type: params[:type], number_in_party: params[:number_in_party])
+
+  return {title: 'Thanks!',
+          description: 'Your RSVP update has been registered.'}.to_json
 end
 
 post '/users' do
@@ -51,11 +56,11 @@ get '/users/error' do
 end
 
 get %r{/users/([\d]+)} do
-  user = User.find(params[:captures].first)
-  erb :'users/_show', :locals => {user: user}
-  # redirect "/users/#{user.username}"   ### Redirect to prettier URL???
+  @user = User.find(params[:captures].first)
+  @session_user = User.find(session[:user_id])
+  if @user.id == @session_user.id || @session_user.type == 'Admin'
+    erb :'users/_show', :locals => {user: @user, session_user: @session_user}
+  else
+    redirect '/auth/login'
+  end
 end
-
-# get %r{/users/([\d]+)} do     ### Prettier URL to redirect to???
-
-# end

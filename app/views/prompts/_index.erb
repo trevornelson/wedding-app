@@ -1,0 +1,13 @@
+<h1>Marriage Advice &amp; Wedding Notes</h1>
+
+<% if session_user.type == 'Admin' %>
+  <%= erb :'prompts/create' %>
+<% end %>
+
+<ul class="list-group">
+  <% @user.each do |u| %>
+  <li class="list-group-item">
+    <a href="/prompts/<%= u.id %>" class="add-note" data-id="<%= u.id %>"><%= u.content %></a>
+  </li>
+  <% end %>
+</ul>

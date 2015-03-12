@@ -3,8 +3,14 @@ get '/prompts/create' do
   if admin
     erb :'prompts/_create'
   else
-    erb :'content/_error',
+    erb :'content/_error', :locals => {error_title: "Whoopsie Poopsie!",
+                                        error_description: "You need to be an admin to view the guest notes."}
   end
+end
+
+get '/prompts' do
+  @prompts = Prompts.all
+  erb :'prompts/_index', :locals => {prompts: @prompts}
 end
 
 post '/prompts' do
