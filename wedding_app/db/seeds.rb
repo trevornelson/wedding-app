@@ -1,7 +1,25 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
+### Production Seeds
+
+User.create(status: 'Admin', username: 'trevor', password: '12345', name: 'Trevor Nelson', street_address: '34 12 29th Street #4D', city: 'Long Island City', state: 'NY', zip_code: '11106', invited_plus_one: true)
+
+Prompt.create(content: 'Do you have some marriage advice for us?')
+Prompt.create(content: 'Share a memory of Tina and Trevor.')
+
+### Testing Seeds
+
+
+# Create users with invited_plus_one = true
+10.times do
+  User.create(username: Faker::Internet.user_name, password: '12345', name: Faker::Name.name, street_address: Faker::Address.street_address, city: Faker::Address.city, state: Faker::Address.state_abbr, zip_code: Faker::Address.postcode, invited_plus_one: true)
+end
+
+# Create users with invited_plus_one = false
+3.times do
+  User.create(username: Faker::Internet.user_name, password: '12345', name: Faker::Name.name, street_address: Faker::Address.street_address, city: Faker::Address.city, state: Faker::Address.state_abbr, zip_code: Faker::Address.postcode, invited_plus_one: false)
+end
+
+# Create notes & songs
+5.times do
+  Note.create(prompt_id: 1,user_id: 3, content: Faker::Lorem.paragraph)
+  Song.create(user_id: 3, name: Faker::Lorem.sentence, artist: Faker::Name.name, url: Faker::Internet.url('www.youtube.com'))
+end
