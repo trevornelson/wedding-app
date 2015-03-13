@@ -2,13 +2,20 @@
 <html>
 <head>
   <title>WeddingApp</title>
+  <link href="//maxcdn.bootstrapcdn.com/bootstrap/<%= bootstrap_version %>/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/<%= font_awesome_version %>/css/font-awesome.min.css">
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
 
+
+
 <%= yield %>
+
+<%= render "auth/signin" %>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/<%= bootstrap_version %>/js/bootstrap.min.js"></script>
 
 </body>
 </html>

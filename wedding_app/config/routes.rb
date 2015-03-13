@@ -1,4 +1,15 @@
 Rails.application.routes.draw do
+
+  root 'welcome#index'
+  post 'sign-in' => 'auth#authenticate'
+  get 'sign-out' => 'auth#signout'
+  resources :users, except: :destroy
+  resources :songs, only: [:index, :create, :new]
+  resources :prompts, only: [:index, :create, :new, :show]
+  resources :notes, only: [:index, :create, :new]
+  resources :gifts, only: [:index, :create, :new, :show]
+
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
