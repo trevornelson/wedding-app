@@ -5,4 +5,5 @@ class User < ActiveRecord::Base
   scope :not_attending, -> { where(status: 'NotAttending') }
 
   has_secure_password
+
 end

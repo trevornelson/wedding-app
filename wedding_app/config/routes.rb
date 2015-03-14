@@ -1,8 +1,7 @@
 Rails.application.routes.draw do
 
   root 'welcome#index'
-  post 'sign-in' => 'auth#authenticate'
-  get 'sign-out' => 'auth#signout'
+  resources :auth, only: [:create, :new]
   resources :users, except: :destroy
   resources :songs, only: [:index, :create, :new]
   resources :prompts, only: [:index, :create, :new, :show]
