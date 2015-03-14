@@ -9,13 +9,13 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
-
-
-<%= yield %>
-
-<%= render "auth/signin" %>
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/<%= bootstrap_version %>/js/bootstrap.min.js"></script>
+  <div class="container-fluid" id="page-content">
+    <div class="container">
+    <%= yield %>
+    </div>
+  </div>
+  <%= render "auth/signin" %>
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/<%= bootstrap_version %>/js/bootstrap.min.js"></script>
 
 </body>
 </html>

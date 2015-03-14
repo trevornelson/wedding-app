@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
 
   root 'welcome#index'
-  resources :auth, only: [:create, :new]
+  post 'auth/create' => 'auth#create'
+
+
+  resources :auth, only: [:create, :new] # this didn't seem to work.
   resources :users, except: :destroy
   resources :songs, only: [:index, :create, :new]
   resources :prompts, only: [:index, :create, :new, :show]
