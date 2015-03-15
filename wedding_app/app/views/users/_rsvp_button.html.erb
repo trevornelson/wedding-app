@@ -1,0 +1,13 @@
+<% if user.status == 'Attending' %>
+  <button class="btn btn-default" id="rsvp-button" data-id="<%= user.id %>" data-status="NotAttending">
+    I Can't Attend
+  </button>
+<% elsif user.status == 'NotAttending' %>
+  <button class="btn btn-default" id="rsvp-button" data-id="<%= user.id %>" data-status="Attending">I'm Attending</button>
+<% else %>
+  <button class="btn btn-default" id="rsvp-button" data-id="<%= user.id %>" data-status="Attending">I'm Attending</button>
+  <button class="btn btn-default" id="rsvp-button" data-id="<%= user.id %>" data-status="NotAttending">I Can't Attend</button>
+<% end %>
+
+
+
