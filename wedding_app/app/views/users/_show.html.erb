@@ -1,9 +1,8 @@
 <div class="jumbotron">
-
   <h1>Welcome, <%= @user.name %></h1>
-
-  <% if @user.type == 'NoResponse' %>
-  <%= erb :'users/_rsvp', :locals => {user: user, session_user: session_user} %>
+  <% if @user.status == 'NoResponse' %>
+    <%= render partial: "rsvp", :locals => {user: @user} %>
   <% end %>
-
 </div>
+<%= render partial: "/welcome/wedding_details" %>
+

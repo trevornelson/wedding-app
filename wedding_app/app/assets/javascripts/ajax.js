@@ -7,10 +7,42 @@ $(document).ready(function(){
     var data = $(this).serialize();
     var url = '/auth/create';
 
-    Ajaj.postForm(url, data);
+    Ajaj.signInForm(url, data);
   });
 
+  $('#nav-notes').on('click', function(e){
+    e.preventDefault();
 
+    Ajaj.getPage('/prompts');
+  });
+
+  $('#nav-registry').on('click', function(e){
+    e.preventDefault();
+
+    Ajaj.getPage('/gifts');
+  });
+
+  $('#page-content').on('click', '#rsvp-button', function(e){
+    e.preventDefault();
+    var party_num = $('#number-in-party option:selected').text();
+    var data = $(this).data();
+    var response = data['status'];
+    var url = '/users/' + data['id'];
+
+    Ajaj.updateUser(url, {status: data['status'],
+                          number_in_party: party_num
+                          });
+  });
+
+  $('#page-content').on('submit', '.note-form', function(e){
+    e.preventDefault();
+    var data = $(this).serialize();
+    var url = '/notes';
+
+    Ajaj.addNoteForm(data);
+    $('.collapse.in').removeClass('in');
+    $('.textarea-input').text('');
+  });
 
 });
 
@@ -19,7 +51,7 @@ $(document).ready(function(){
 
 var Ajaj = function(){
 
-  var postForm = function(url, data) {
+  var signInForm = function(url, data) {
     $.ajax({
       type: 'post',
       url: url,
@@ -31,6 +63,20 @@ var Ajaj = function(){
       error: function(result) {
         $('#signin-title').text(View.errorAlert.pw).css('color', 'white');
         View.errorModal();
+      }
+    });
+  }
+
+  var addNoteForm = function(data) {
+    $.ajax({
+      type: 'post',
+      url: '/notes',
+      data: data,
+      success: function(result) {
+        $('.note-form-success').removeClass('hidden');
+      },
+      error: function() {
+        $('.note-form-alert').removeClass('hidden');
       }
     });
   }
@@ -49,6 +95,37 @@ var Ajaj = function(){
         View.openModal('Hmmm... something went wrong', 'Please try again.', 'Error');
       }
     });
+  }
+
+  var getPage = function(url) {
+    $.ajax({
+      type: 'get',
+      url: url,
+      success: function(result) {
+        $('#page-content').html(result);
+      },
+      error: function(result) {
+        View.openModal('Hmmm... something went wrong', 'Please try again.', 'Error');
+      }
+    });
+  }
+
+  var updateUser = function(url, data) {
+    console.log('updating user');
+
+    $.ajax({
+      type: 'put',
+      data: data,
+      url: url,
+      success: function(result) {
+        Ajaj.getUserPage(result);
+      },
+      error: function() {
+        console.log('something went wrong');  ////////////
+      }
+    });
+  }
+
 
   // var checkSession = function() {
 
@@ -68,12 +145,14 @@ var Ajaj = function(){
   //     }
   //   });
   // }
-  }
 
   return {
     // checkSession: checkSession,
-    postForm: postForm,
-    getUserPage: getUserPage
+    signInForm: signInForm,
+    addNoteForm: addNoteForm,
+    getPage: getPage,
+    getUserPage: getUserPage,
+    updateUser: updateUser
   }
 
 }();

@@ -1,0 +1,13 @@
+<h1>Wedding Registry</h1>
+  <div class="row">
+<% @gifts.each_with_index do |gift, index| %>
+
+  <%= render partial: "gift", :locals => {gift: gift} %>
+
+  <% if (index + 1) % 4 == 0 %>
+  </div>
+  <div class="row">
+  <% end %>
+
+<% end %>
+</div>

@@ -1,0 +1,22 @@
+<li class="list-group-item">
+  <a href="#prompt<%= prompt.id %>note" data-toggle="collapse">
+    <%= prompt.content %>
+  </a>
+  <div class="collapse" id="prompt<%= prompt.id %>note">
+    <div class="hidden note-form-alert fade in">
+      <div class="alert alert-warning">
+        <a href="#" class="close" data-dismiss="alert">&times;</a>
+        Sorry, your submission didn't go through. Care to try again?
+      </div>
+    </div>
+    <form class="note-form">
+      <div class="form-horizontal">
+        <div class="form-group">
+          <textarea name="content" class="form-control textarea-input" rows="3"></textarea>
+        </div>
+      </div>
+      <input type="hidden" name="prompt_id" value="<%= prompt.id %>">
+      <input type="submit">
+    </form>
+  </div>
+</li>
