@@ -37,11 +37,17 @@ $(document).ready(function(){
   $('#page-content').on('submit', '.note-form', function(e){
     e.preventDefault();
     var data = $(this).serialize();
-    var url = '/notes';
 
     Ajaj.addNoteForm(data);
     $('.collapse.in').removeClass('in');
     $('.textarea-input').text('');
+  });
+
+  $('#page-content').on('submit', '#song-form', function(e){
+    e.preventDefault();
+    var data = $(this).serialize();
+
+    Ajaj.addSongForm(data);
   });
 
 });
@@ -77,6 +83,20 @@ var Ajaj = function(){
       },
       error: function() {
         $('.note-form-alert').removeClass('hidden');
+      }
+    });
+  }
+
+  var addSongForm = function(data) {
+    $.ajax({
+      type: 'post',
+      url: '/songs',
+      data: data,
+      success: function(result) {
+        $('#song-form-success').removeClass('hidden');
+      },
+      error: function() {
+        $('#song-form-error').removeClass('hidden');
       }
     });
   }
@@ -150,6 +170,7 @@ var Ajaj = function(){
     // checkSession: checkSession,
     signInForm: signInForm,
     addNoteForm: addNoteForm,
+    addSongForm: addSongForm,
     getPage: getPage,
     getUserPage: getUserPage,
     updateUser: updateUser

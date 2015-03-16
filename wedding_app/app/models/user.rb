@@ -6,4 +6,8 @@ class User < ActiveRecord::Base
 
   has_secure_password
 
+  def admin?
+    status == 'Admin'
+  end
+
 end
