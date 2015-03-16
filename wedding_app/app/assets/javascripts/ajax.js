@@ -37,7 +37,6 @@ $(document).ready(function(){
   $('#page-content').on('submit', '.note-form', function(e){
     e.preventDefault();
     var data = $(this).serialize();
-    var url = '/notes';
 
     Ajaj.addNoteForm(data);
     $('.collapse.in').removeClass('in');
@@ -74,6 +73,20 @@ var Ajaj = function(){
       data: data,
       success: function(result) {
         $('.note-form-success').removeClass('hidden');
+      },
+      error: function() {
+        $('.note-form-alert').removeClass('hidden');
+      }
+    });
+  }
+
+  var addGiftForm = function(data) {
+    $.ajax({
+      type: 'post',
+      url: '/gifts',
+      data: data,
+      success: function(result) {
+        $('#gift-form-success').removeClass('hidden');
       },
       error: function() {
         $('.note-form-alert').removeClass('hidden');
@@ -150,6 +163,7 @@ var Ajaj = function(){
     // checkSession: checkSession,
     signInForm: signInForm,
     addNoteForm: addNoteForm,
+    addGiftForm: addGiftForm,
     getPage: getPage,
     getUserPage: getUserPage,
     updateUser: updateUser

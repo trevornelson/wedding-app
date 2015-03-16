@@ -1,6 +1,6 @@
 <h1>Wedding Registry</h1>
   <% if @user.admin? %>
-  <%= render partial: "add_gift" %>
+  <%= render partial: "add_gift", :locals => {new_gift: @new_gift} %>
   <% end %>
 
   <div class="row">

@@ -20,7 +20,6 @@ ActiveRecord::Schema.define(version: 20150316200919) do
     t.string   "title",                                 null: false
     t.string   "category",                              null: false
     t.string   "url"
-    t.string   "image_url",                             null: false
     t.boolean  "purchased",             default: false
     t.datetime "created_at"
     t.datetime "updated_at"
