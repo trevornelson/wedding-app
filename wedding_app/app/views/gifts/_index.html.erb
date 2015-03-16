@@ -1,4 +1,8 @@
 <h1>Wedding Registry</h1>
+  <% if @user.admin? %>
+  <%= render partial: "add_gift" %>
+  <% end %>
+
   <div class="row">
 <% @gifts.each_with_index do |gift, index| %>
 
