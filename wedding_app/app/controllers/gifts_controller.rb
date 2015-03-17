@@ -29,9 +29,17 @@ class GiftsController < ApplicationController
   # end
   #
   # Then your ajax requests will call /gifts.js and your html reqs would just call /gifts
-
+  # This goes throughout your code - it will allow you to have an Ajaxy version of your site
+  # as well as a non-js version that responds to normal rails CRUD routes
+  #
   # Ultimately, I think this index method has too much complexity wrapped up in what
-  # its doing... especially as you delve down through the rendered partials
+  # its doing... especially as you delve down through the rendered partials.  It might
+  # be better to have your "add gift" code in your view make an ajax request that
+  # calls a controller "new" method which would create the new empty object and
+  # return a partial erb rendering for the form.
+  #
+  # Again - this is a minor code smell... controller methods like this tend to
+  # start to grow over time and become unwieldy
   def index
     @gifts = Gift.all
     @new_gift = Gift.new()
