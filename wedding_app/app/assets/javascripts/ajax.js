@@ -1,4 +1,4 @@
-$(document).ready(function(){
+  $(document).ready(function(){
 
   $('#signin-modal').modal('show');
 
