@@ -11,6 +11,10 @@ class Gift < ActiveRecord::Base
                         :category
 
   def mark_as_purchased
+    # This os not going to update the status in the database.  You need to do
+    # self.purchased = true
+    # self.save
+    #
     purchased = true
     return purchased
   end
