@@ -1,0 +1,21 @@
+<h1>Wedding Registry</h1>
+  <!-- You can move this logic into the add_gift partial itself...  just render
+       the partial here and do the logic check within.  Also, just call Gift.new
+       within the partial to have the object for the form_for helper -->
+  <% if @user.admin? %>
+  <%= render partial: "add_gift", :locals => {new_gift: @new_gift} %>
+  <% end %>
+
+  <div class="row">
+  <!-- Please keep your indentation correct. I'm confused by the outdent here -->
+<% @gifts.each_with_index do |gift, index| %>
+
+  <%= render partial: "gift", :locals => {gift: gift} %>
+
+  <% if (index + 1) % 4 == 0 %>
+  </div>
+  <div class="row">
+  <% end %>
+
+<% end %>
+</div>

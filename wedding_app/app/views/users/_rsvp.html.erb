@@ -1,0 +1,19 @@
+<div class="form-container panel panel-default">
+    <ul class="list-group">
+      <% if user.invited_plus_one %>
+      <li class="list-group-item">
+          Number in party:
+          <select id="number-in-party">
+          <% for i in 1..5 do %>
+            <option value="<%= i %>"><%= i %></option>
+          <% end %>
+          </select>
+          <button type="submit" class="btn btn-default">RSVP</button>
+        </form>
+      <% end %>
+      </li>
+      <li class="list-group-item">
+        <%= render partial: "rsvp_button", :locals => {user: user} %>
+      </li>
+    </ul>
+</div>

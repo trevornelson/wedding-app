@@ -1,0 +1,15 @@
+<!-- I think I might pull the button html out to another partial, and pass it locals.  It "might" be a place that a helper method would be useful.  There is just a lot of duplication here which is a code smell.
+-->
+<% if user.status == 'Attending' %>
+  <button class="btn btn-default" id="rsvp-button" data-id="<%= user.id %>" data-status="NotAttending">
+    I Can't Attend
+  </button>
+<% elsif user.status == 'NotAttending' %>
+  <button class="btn btn-default" id="rsvp-button" data-id="<%= user.id %>" data-status="Attending">I'm Attending</button>
+<% else %>
+  <button class="btn btn-default" id="rsvp-button" data-id="<%= user.id %>" data-status="Attending">I'm Attending</button>
+  <button class="btn btn-default" id="rsvp-button" data-id="<%= user.id %>" data-status="NotAttending">I Can't Attend</button>
+<% end %>
+
+
+

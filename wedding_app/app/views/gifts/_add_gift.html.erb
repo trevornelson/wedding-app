@@ -1,0 +1,24 @@
+<div class="panel panel-default">
+  <div class="hidden fade in" id="gift-form-success">
+    <div class="alert alert-success">
+      <a href="#" class="close" data-dismiss="alert">&times;</a>
+      <strong>Success!</strong> Your registry item was uploaded successfully.
+    </div>
+  </div>
+  <%= form_for new_gift do |f| %>
+    <%= f.label :title %>:
+    <%= f.text_field :title %><br />
+
+    <%= f.label :category %>:
+    <%= f.select(:category, [['Home Decor', 'Home Decor'], ['Kitchenware', 'Kitchenware'], ['Gift Certificates', 'Gift Certificates'], ['Events and Dates', 'Events and Dates'], ['Charitable Gifts', 'Charitable Gifts'], ['Other', 'Other']]) %><br />
+
+    <%= f.label :url %>:
+    <%= f.text_field :url %><br />
+
+    <%= f.label :gift_img %>:
+    <%= f.file_field :gift_img %><br />
+
+    <%= f.submit %>
+
+  <% end %>
+</div>

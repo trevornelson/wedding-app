@@ -1,0 +1,12 @@
+<div class="hidden note-form-success fade in">
+  <div class="alert alert-success">
+    <a href="#" class="close" data-dismiss="alert">&times;</a>
+    <strong>Success!</strong> Your message was sent successfully.
+  </div>
+</div>
+<h2>Leave a Note...</h2>
+<ul class="list-group">
+  <%= render @prompts %>
+</ul>
+<h2>Recommend a Song...</h2>
+<%= render "songs/new", :locals => {user: @user} %>
