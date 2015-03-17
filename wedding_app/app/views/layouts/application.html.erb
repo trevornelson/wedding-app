@@ -2,6 +2,7 @@
 <html>
 <head>
   <title>WeddingApp</title>
+  <!-- Did you try using the bootstrap gem so that the js and css integrate into the asset pipeline? -->
   <link href="//maxcdn.bootstrapcdn.com/bootstrap/<%= bootstrap_version %>/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/<%= font_awesome_version %>/css/font-awesome.min.css">
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
@@ -16,6 +17,9 @@
     </div>
   </div>
   <%= render "auth/signin" %>
+  <!-- Did you try using the bootstrap gem so that the js and css integrate into the asset pipeline?
+       usually you want to include your js in the head section of your html code.
+  -->
   <script src="//maxcdn.bootstrapcdn.com/bootstrap/<%= bootstrap_version %>/js/bootstrap.min.js"></script>
 
 </body>
