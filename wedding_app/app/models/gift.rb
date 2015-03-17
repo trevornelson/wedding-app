@@ -1,6 +1,12 @@
 class Gift < ActiveRecord::Base
-  scope :purchased, -> { where(purchased: true) }
+  # I like scopes...  know also that you can use a class method to do the same thing
+  # def self.purchased
+  #   where(purchased: true)
+  # end
+  #
+  scope :purchased,     -> { where(purchased: true) }
   scope :not_purchased, -> { where(purchased: false) }
+
 
   has_attached_file :gift_img, :styles => { :medium => "300x300>", :thumb => "100x100>" }
 
@@ -12,8 +18,7 @@ class Gift < ActiveRecord::Base
 
   def mark_as_purchased
     # This os not going to update the status in the database.  You need to do
-    # self.purchased = true
-    # self.save
+    # self.update(purchased: true)
     #
     purchased = true
     return purchased
